@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  client:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    environment:
+      - 'NODE_ENV=development'
+    volumes:
+      - .:/app
+    networks:
+      - enodeus
+    ports:
+      - '8080:8080'
+    tty: true
+
+networks:
+  enodeus:
+    external:
+      name: enodeus
